@@ -1,0 +1,63 @@
+HOME
+	Windows Authentication
+	Search
+	Branding (Code Share is Microsoft's free open source project hosting site. You can create projects to share with the world, collaborate with others on their projects, and download open source software.)
+	Create Project
+Join a Project
+Feedback (IssueTracker)
+	Learn More (FAQ)
+	Footer: version, copyright, contact, api
+	weekly: trending projects (starred)
+	weekly: new projects 
+	weekly: starred by people you follow
+	most downloaded
+	top followed
+	
+	
+Review changes
+Issue tracker
+Plan future (discussion)
+
+
+USER
+
+picture
+email
+joined date
+Followers, Starred, Following
+
+PROJECT
+
+Name
+Logo
+QuickDescription
+Description (md files?)
+Globant Stars
+Like
+Follow
+Visits
+Openings
+
+SOURCE CODE
+Repository Explorer
+Download zip
+HTTPS clone
+
+DOWNLOADS
+Releases (version (semantic), zip, date)
+
+
+
+ISSUE TRACKER
+author
+labels
+
+WIKI
+
+PEOPLE
+coordinators
+developers
+editors
+
+LICENSE
+

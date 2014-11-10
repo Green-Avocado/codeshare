@@ -1,0 +1,20 @@
+﻿GET http://localhost:64850/v1/projects/2 HTTP/1.1
+Host: localhost:64850
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Authorization: NTLM TlRMTVNTUAADAAAAGAAYAIIAAAAMAQwBmgAAAAAAAABYAAAAGAAYAFgAAAASABIAcAAAAAAAAACmAQAABYKIogYBsR0AAAAP3vUcP28s5elFq9tLgfxRbm0AYQByAGkAbwAuAG0AbwByAGUAbgBvAEEATABEAEUAQgBBAFIAQQBOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKjodaeVHbjUPU/z+7agDoMBAQAAAAAAAMLo19Iz8c8BTOzK7lKsQH8AAAAAAgASAEEATABEAEUAQgBBAFIAQQBOAAEAEgBBAEwARABFAEIAQQBSAEEATgAEABIAQQBsAGQAZQBiAGEAcgBhAG4AAwASAEEAbABkAGUAYgBhAHIAYQBuAAcACADC6NfSM/HPAQYABAACAAAACAAwADAAAAAAAAAAAQAAAAAgAADX4w6/+rh3FiVwHRmXrmoWzC/a4CXSSmp9YodqFBLeLAoAEAAAAAAAAAAAAAAAAAAAAAAACQAcAEgAVABUAFAALwBsAG8AYwBhAGwAaABvAHMAdAAAAAAAAAAAAAAAAAA=
+
+FOLLOWING REQUESTS
+
+GET http://localhost:64850/v1/projects/2 HTTP/1.1
+Host: localhost:64850
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+
+

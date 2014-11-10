@@ -1,0 +1,48 @@
+﻿@model CodeShare.Core.Project
+
+@{
+    ViewBag.Title = "Project Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+  <div class="col-md-1"><img height="80" width="80" style="padding-top:5px" src="@Model.LogoUrl" /></div>
+    <div class="col-md-11">
+    <h2>@Model.Name</h2>
+    <h5>@Model.QuickDescription</h5>
+    </div>
+</div>
+
+<br>
+<p>
+    @Html.ActionLink("Home", "Home", "Project", new { id = @Model.Id }, null) |
+    @Html.ActionLink("Source Code", "SourceCode", "Project", new { id = @Model.Id }, null) |
+    @Html.ActionLink("Downloads", "Download", "Project", new { id = @Model.Id }, null) |
+    @Html.ActionLink("Team", "Team", "Project", new { id = @Model.Id }, null) |
+    @Html.ActionLink("Issue Tracker", "IssueTracker", "Project", new { id = @Model.Id }, null)
+</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "HomeEdit", new { id = Model.Id })
+</p>
+
+<a href="~/Wireframes/project.home.png" target="_blank">Wireframe of this page</a>

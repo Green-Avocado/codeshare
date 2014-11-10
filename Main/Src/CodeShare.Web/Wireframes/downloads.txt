@@ -1,0 +1,210 @@
+﻿<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1123" measuredH="604" mockupW="923" mockupH="596">
+  <controls>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Canvas" x="200" y="8" w="923" h="596" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="-1"/>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::HRule" x="200" y="88" w="923" h="-1" measuredW="100" measuredH="10" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Label" x="215" y="29" w="-1" h="-1" measuredW="158" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>24</size>
+        <text>OpenSourceD</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="380" y="37" w="-1" h="-1" measuredW="124" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>One%20Team%2C%20One%20Goal</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::SearchBox" x="944" y="33" w="164" h="-1" measuredW="120" measuredH="25" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Search</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Link" x="804" y="36" w="-1" h="-1" measuredW="129" measuredH="19" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>globant%5Cmario.moreno</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Icon" x="748" y="37" w="-1" h="-1" measuredW="16" measuredH="16" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <icon>EmailIcon%7Cxsmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Label" x="766" y="35" w="-1" h="-1" measuredW="23" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%2810%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::HRule" x="200" y="572" w="923" h="-1" measuredW="100" measuredH="10" zOrder="8" locked="false" isInGroup="-1"/>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Label" x="617" y="578" w="-1" h="-1" measuredW="116" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>2013%20OpenSourceD</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Label" x="252" y="137" w="-1" h="-1" measuredW="208" measuredH="28" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>20</size>
+        <text>Create%20a%20New%20Project</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Canvas" x="200" y="8" w="923" h="596" measuredW="100" measuredH="70" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Label" x="252" y="22" w="-1" h="-1" measuredW="127" measuredH="32" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <size>24</size>
+        <text>CodeShare</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Label" x="252" y="48" w="-1" h="-1" measuredW="204" measuredH="20" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>12</size>
+        <text>Open%20collaboration%20powers%20everything</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::SearchBox" x="504" y="33" w="288" h="-1" measuredW="120" measuredH="25" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Search%20Project</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Link" x="930" y="36" w="-1" h="-1" measuredW="129" measuredH="19" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>globant%5Cmario.moreno</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::HRule" x="200" y="572" w="923" h="-1" measuredW="100" measuredH="10" zOrder="16" locked="false" isInGroup="-1"/>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Label" x="617" y="578" w="-1" h="-1" measuredW="127" measuredH="21" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>2014%20code%20share%20v1.0</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Paragraph" x="299" y="99" w="181" h="28" measuredW="275" measuredH="80" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>28</size>
+        <text>Project%20Name</text>
+      </controlProperties>
+    </control>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Link" x="750" y="580" w="-1" h="-1" measuredW="46" measuredH="19" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>contact</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Link" x="805" y="580" w="-1" h="-1" measuredW="18" measuredH="19" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>api</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Link" x="252" y="142" w="-1" h="-1" measuredW="34" measuredH="19" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Home</text>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Link" x="303" y="142" w="-1" h="-1" measuredW="77" measuredH="19" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Source%20Code</text>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Link" x="396" y="142" w="-1" h="-1" measuredW="64" measuredH="19" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Downloads</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Link" x="475" y="142" w="-1" h="-1" measuredW="33" measuredH="19" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Team</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Link" x="524" y="142" w="-1" h="-1" measuredW="81" measuredH="19" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Issue%20Tracker</text>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::Label" x="482" y="107" w="-1" h="-1" measuredW="136" measuredH="20" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <italic>true</italic>
+        <size>12</size>
+        <text>Project%20quick%20description</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::Image" x="252" y="93" w="40" h="40" measuredW="77" measuredH="79" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>logo</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::Label" x="252" y="177" w="-1" h="-1" measuredW="144" measuredH="24" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <size>16</size>
+        <text>Release%20Name%20v2.0</text>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::Link" x="252" y="458" w="-1" h="-1" measuredW="37" measuredH="19" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%2001</text>
+      </controlProperties>
+    </control>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Label" x="252" y="201" w="-1" h="-1" measuredW="71" measuredH="21" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>10/24/2014</text>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::Label" x="252" y="423" w="-1" h="-1" measuredW="108" measuredH="24" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <size>16</size>
+        <text>Additional%20Files</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Link" x="252" y="485" w="-1" h="-1" measuredW="41" measuredH="19" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%2002</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Link" x="252" y="234" w="-1" h="-1" measuredW="70" measuredH="22" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>Download</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::Label" x="889" y="180" w="-1" h="-1" measuredW="136" measuredH="24" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <size>16</size>
+        <text>Previous%20Releases</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::Paragraph" x="252" y="271" w="571" h="152" measuredW="275" measuredH="80" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Release%20description*%3A%20Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetur%20adipiscing%20elit.%20Nullam%20in%20aliquam%20enim.%20Nulla%20sagittis%20bibendum%20purus%2C%20at%20pulvinar%20tellus.%20Vestibulum%20aliquam%20lorem%20elit%2C%20ac%20gravida%20nibh%20feugiat%20at.%20Suspendisse%20feugiat%20dui%20et%20accumsan%20vehicula.%20%5BVestibulum%5D%20efficitur%20rhoncus%20ornare.%20Maecenas%20et%20massa%20tincidunt%2C%20mollis%20dui%20in%2C%20consequat%20velit.%20%26Donec%26%20et%20mauris%20et%20odio%20faucibus%20lobortis%20id%20id%20lorem.%20Suspendisse%20potenti.%20Etiam%20dignissim%2C%20orci%20id%20suscipit%20congue%2C%20felis%20quam%20tempus%20dui%2C%20tempus%20varius%20velit%20nibh%20nec%20enim.%20Sed%20pulvinar%2C%20odio%20id%20suscipit%20sollicitudin%2C%20sem%20diam%20%5Bsodales%20enim%5D%2C%20eu%20tincidunt%20massa%20massa%20non%20ante.%20Nunc%20in%20dignissim%20dui.%20Cras%20et%20hendrerit%20erat.%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="96" controlTypeID="__group__" x="889" y="222" w="117" h="100" measuredW="117" measuredH="100" zOrder="36" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Link" x="0" y="0" w="-1" h="-1" measuredW="111" measuredH="19" zOrder="0" locked="false" isInGroup="96">
+          <controlProperties>
+            <text>Release%20Name%20v1.1</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Link" x="0" y="27" w="-1" h="-1" measuredW="114" measuredH="19" zOrder="1" locked="false" isInGroup="96">
+          <controlProperties>
+            <text>Release%20Name%20v1.0</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Link" x="0" y="54" w="-1" h="-1" measuredW="117" measuredH="19" zOrder="2" locked="false" isInGroup="96">
+          <controlProperties>
+            <text>Release%20Name%20v0.9</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Link" x="0" y="81" w="-1" h="-1" measuredW="114" measuredH="19" zOrder="3" locked="false" isInGroup="96">
+          <controlProperties>
+            <text>Release%20Name%20v0.1</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::Link" x="252" y="538" w="-1" h="-1" measuredW="24" measuredH="19" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Edit</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

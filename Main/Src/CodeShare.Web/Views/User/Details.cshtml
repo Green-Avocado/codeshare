@@ -1,0 +1,58 @@
+﻿@model CodeShare.Core.User
+
+@{
+    ViewBag.Title = "User Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.NickName</h2>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-1"><img height="100" width="100" style="padding-top:5px" src="@Model.AvatarUrl" /></div>
+        <div class="col-md-11">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NickName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NickName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AvatarUrl)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AvatarUrl)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.JoinDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.JoinDate)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit") |
+    @Html.ActionLink("Back to Index", "Index", "Home")
+</p>
+
+<a href="~/Wireframes/user.profile.png" target="_blank">Wireframe of this page</a>
+
