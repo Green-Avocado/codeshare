@@ -14,6 +14,7 @@ namespace CodeShare.Core
             CreatorOf = new HashSet<Project>();
             AdministratorFor = new HashSet<Project>();
             ContributorFor = new HashSet<Project>();
+            CodeSnippets = new HashSet<CodeSnippet>();
         }
 
         public int Id { get; set; }
@@ -41,5 +42,7 @@ namespace CodeShare.Core
         public virtual ICollection<Project> AdministratorFor { get; set; }
         
         public virtual ICollection<Project> ContributorFor { get; set; }
+
+        public virtual ICollection<CodeSnippet> CodeSnippets { get; set; }
     }
 }
