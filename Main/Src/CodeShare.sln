@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Web
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeShare.Core", "CodeShare.Core\CodeShare.Core.csproj", "{8463DCCD-D814-4B4D-8C82-8C2B8F6DACD3}"
 EndProject
@@ -40,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeShare.Application.Test", "CodeShare.Application.Test\CodeShare.Application.Test.csproj", "{EA55E0C7-4AF2-4634-8F4F-ADD7B21F0528}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeShare.Api", "CodeShare.Api\CodeShare.Api.csproj", "{CE83D957-3A55-454A-A7DE-ECF90D8DDF8D}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CodeShare.Database", "CodeShare.Database\CodeShare.Database.sqlproj", "{AA686503-E367-4B7D-889F-2E95F6BD30DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,12 @@ Global
 		{CE83D957-3A55-454A-A7DE-ECF90D8DDF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE83D957-3A55-454A-A7DE-ECF90D8DDF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE83D957-3A55-454A-A7DE-ECF90D8DDF8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
