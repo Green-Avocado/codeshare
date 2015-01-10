@@ -28,7 +28,10 @@ namespace CodeShare.Api.Models
                 var userName = HttpContext.Current.User.Identity.Name;
                 var userService = new UserService();
                 var user = userService.GetUserByName(userName);
-                return GetUserInfoFromUser(user);
+                if (user != null)
+                {
+                    return GetUserInfoFromUser(user);
+                }
             }
 
             return null;
