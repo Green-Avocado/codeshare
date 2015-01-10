@@ -20,22 +20,19 @@ API Documentation
 
 ####GET PROJECT####
 
-**DESCRIPTION**
+**Description**: 
 Allow the user to get a specific project information
 
-**ARGUMENTS**
+**Arguments**:
 {id} the id of the project
 
-**RETURNS**
-ProjectInfo. Information about the project
+**Returns**: ProjectInfo. Information about the project
 
-**DEFINITION**
-GET https://api.codeshare.globant.com/v1/projects/{id}
+**Definition**: GET https://api.codeshare.globant.com/v1/projects/{id}
 
-**EXAMPLE REQUEST**
-https://api.codeshare.globant.com/v1/projects/1
+**Example Request**: https://api.codeshare.globant.com/v1/projects/1
 
-**EXAMPLE RESPONSE**
+**Example Response**:
 
     {
       "id": 1,
@@ -47,32 +44,32 @@ https://api.codeshare.globant.com/v1/projects/1
       "creationDate": "\/Date(1412118533083-0300)\/"
     }
 
-**ERROR MESSAGES**
+**Error Messages**:
 
 404 If there is no project with the provided id
 
 ####CREATE PROJECTS####
 
-**DESCRIPTION**
+**Description**:
 Allow the user to create a new project
 
-**ARGUMENTS**
+**Arguments**:
 ProjectInfo. Only Name and Quick Description is required at this point.
 
-**RETURNS**
+**Returns**:
 ProjectInfo with the new project Id
 
-**DEFINITION**
+**Definition**:
 POST https://api.codeshare.globant.com/v1/projects
 
-**EXAMPLE REQUEST**
+**Example Request**:
 
     {
       "name": "A New Project",
       "quickDescription": "This is a quick description",
     }
 
-**EXAMPLE RESPONSE**
+**Example Response**:
 
     {
       "id": 2,
@@ -84,29 +81,29 @@ POST https://api.codeshare.globant.com/v1/projects
       "creationDate": "\/Date(1414430046888-0300)\/"
     }
 
-**ERROR MESSAGES**
+**Error Messages**:
 
 400 If the a project with the same name already exists
 
 ####GET LATEST PROJECTS####
 
-**DESCRIPTION**
+**Description**:
 Get the latest projects according to CreationDate
 
-**ARGUMENTS**
+**Arguments**:
 {top} Optional parameter to indicate how many projects do you want. By default it will return the latest 10 projects
 
-**RETURNS**
+**Returns**:
 An array of ProjectInfo
 
-**DEFINITION**
+**Description**:
 GET https://api.codeshare.globant.com/v1/projects/latest?top=x
 
-**EXAMPLE REQUEST**
+**Example Request**:
 
 https://api.codeshare.globant.com/v1/projects/latest?top=2
 
-**EXAMPLE RESPONSE**
+**Example Response**:
 
     [
       {
@@ -131,19 +128,19 @@ https://api.codeshare.globant.com/v1/projects/latest?top=2
 
 ####UPDATE  PROJECT####
 
-**DESCRIPTION**
+**Description**:
 Update a specific project Quick Description, Description and or Logo URL
 
-**ARGUMENTS**
+**Arguments**:
 A ProjectInfo with the updated information
 
-**RETURNS**
+**Returns**:
 A ProjectInfo with the updated information
 
-**DEFINITION**
+**Definition**:
 PUT https://api.codeshare.globant.com/v1/projects
 
-**EXAMPLE REQUEST**
+**Example Request**:
 
       {
     	"id": 2,
@@ -152,7 +149,7 @@ PUT https://api.codeshare.globant.com/v1/projects
     	"logoUrl": "http://img4.wikia.nocookie.net/__cb20091010095734/starcraft/images/7/7a/JimRaynor_SC2_Art1.jpg"
       }
 
-**EXAMPLE RESPONSE**
+**Example Response**:
 
     {
       "id": 5,
@@ -164,13 +161,13 @@ PUT https://api.codeshare.globant.com/v1/projects
       "creationDate": "\/Date(1414432707167-0300)\/"
     }
 
-**ERROR MESSAGES**
+**Error Messages**:
 
 403 If the user is not member of the project
 
 ### USERS ###
 
-#### USER INFO EXAMPLE ####
+#### User Info Example ####
 
     {
       "id": 1,
@@ -182,22 +179,22 @@ PUT https://api.codeshare.globant.com/v1/projects
 
 #### CURRENT ####
 
-**DESCRIPTION**
+**Description**:
 Get the current UserInfo
 
-**ARGUMENTS**
+**Arguments**:
 None
 
-**RETURNS**
+**Returns**:
 The UserInfo of the current user
 
-**DEFINITION**
+**Definition**:
 GET https://api.codeshare.globant.com/v1/users/current
 
-**EXAMPLE REQUEST**
+**Example Request:**
 
 
-**EXAMPLE RESPONSE**
+**Example Response:**
 
     {
       "id": 1,
@@ -207,26 +204,26 @@ GET https://api.codeshare.globant.com/v1/users/current
       "joinDate": "\/Date(1411134727387-0300)\/"
     }
 
-**ERROR MESSAGES**
+**Error Messages**:
 
 401 if the user is not authenticated
 
 
 #### CREATE USER ####
 
-**DESCRIPTION**
+**Description**:
 Create a new user
 
-**ARGUMENTS**
+**Arguments**:
 UserName and AvatarUrl
 
-**RETURNS**
+**Returns**:
 The UserInfo of the created user
 
-**DEFINITION**
+**Definition:**
 POST https://api.codeshare.globant.com/v1/users
 
-**EXAMPLE REQUEST**
+**Example Request:**
 
     {
       "userName": "GLOBANT\\samus.aran",
@@ -234,7 +231,7 @@ POST https://api.codeshare.globant.com/v1/users
     }
 
 
-**EXAMPLE RESPONSE**
+**Example Response:**
 
     {
       "id": 2,
@@ -244,30 +241,30 @@ POST https://api.codeshare.globant.com/v1/users
       "joinDate": "\/Date(1414435820851-0300)\/"
     }
 
-**ERROR MESSAGES**
+**Error Messages:**
 
 #### UPDATE USER ####
 
-**DESCRIPTION**
+**Description:**
 Update the UserNickName and or AvatarUrl
 
-**ARGUMENTS**
+**Arguments:**
 UserNickName and AvatarUrl
 
-**RETURNS**
+**Returns:**
 The UserInfo of the updated user
 
-**DEFINITION**
+**Definition:**
 PUT  https://api.codeshare.globant.com/v1/users
 
-**EXAMPLE REQUEST**
+**Example Request:**
 
     {
       "nickName": "Mario Moreno",
       "avatarUrl": "http://lvlworld.com/avatar/default/visor.jpg"
     }
 
-**EXAMPLE RESPONSE**
+**Example Response:**
 
     {
       "id": 1,
@@ -277,11 +274,11 @@ PUT  https://api.codeshare.globant.com/v1/users
       "joinDate": "\/Date(1411134727387-0300)\/"
     }
 
-**ERROR MESSAGES**
+**Error Messages:**
 
 #### SEARCH####
 
-####PAGED PROJECT INFO  EXAMPLE####
+####Paged Project Info Example####
 
     {
       "items": [
@@ -298,26 +295,26 @@ PUT  https://api.codeshare.globant.com/v1/users
       "totalCount": 2
     }
 
-**DESCRIPTION**
+**Description:**
 Search by project name
 
-**ARGUMENTS**
+**Arguments:**
 Name=Some characters about how the project name starts
 Page=The page number. 0 by default
 PageSize=The page size. 10 by default
 
-**RETURNS**
+**Returns:**
 PagedProjectInfo
 
-**DEFINITION**
+**Definition:**
 
 GET  https://api.codeshare.globant.com/v1/search?name={ProjectName}&page={Page}&pageSize={PageSize}
 
-**EXAMPLE REQUEST**
+**Example Request:**
 
 GET  https://api.codeshare.globant.com/v1/search?name=project&page=0&pageSize=10
 
-**EXAMPLE RESPONSE**
+**Example Response:**
 
     {
       "items": [
@@ -343,7 +340,7 @@ GET  https://api.codeshare.globant.com/v1/search?name=project&page=0&pageSize=10
       "totalCount": 2
     }
 
-**ERROR MESSAGES**
+**Error Messages:**
 
 ENTITIES
 
