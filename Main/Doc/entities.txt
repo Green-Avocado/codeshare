@@ -1,0 +1,95 @@
+CodeSnippet
+	Id
+	Name
+	Content
+	CreationDate
+	LastModificationDate
+	[Tag] Tags
+	
+Projects
+	Id
+	Name
+	QuickDescription
+	Description
+	LogoUrl
+	SourceUrl
+	CreationDate
+	[User] Likes
+	[User] Followers
+	ProjectUser Creator
+	[ProjectUser] Members
+	[ProjectUserRequest] MemberRequest
+	[ProjectOpening] Openings
+	[Tag] Tags
+	[ProjectRelease] Releases
+
+ProjectFile
+	Id
+	Name
+	Url
+
+ProjectOpening
+	Id
+	Title
+	Description
+	CreationDate
+	[Tag] Tags
+	
+ProjectRelease
+	Id
+	Name
+	CreationDate
+	Description
+	DownloadCount
+	ProjectFile ReleaseFile
+	[ProjectFile] Files
+	
+ProjectUser
+	Id
+	IsActive
+	User User
+	JoinDate
+	ProjectUserRole Role
+
+ProjectUserRequest
+	Id
+	User User
+	Message
+	ProjectOpening RelatedOpening
+
+enum ProjectUserRole
+	Administrator
+	Contributor
+	
+Tag
+	Id
+	Name
+	
+User
+	Id
+	UserName
+	NickName
+	AvatarUrl
+	JoinDate
+	[Project] Following
+	[Project] CreatorOf
+	[Project] AdministratorFor
+	[Project] ContributorFor
+	[CodeSnippet] CodeSnippets
+	
+v1
+
+Projects
+POST /projects
+GET /projects/{id:int}
+GET /projects/latest?top={top}
+PUT /projects
+
+Search
+GET /search?name={name}&page={page}&pageSize={pageSize}
+
+User
+GET /users/current
+POST /users
+PUT /users
+
