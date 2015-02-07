@@ -1,63 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CodeShare.Core.CodeSnippet">
+    <Position X="0.5" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAgAAAAAAAAAAABQAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>CodeSnippet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeShare.Core.PagedResult&lt;TEntity&gt;">
+    <Position X="0.5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAADAAAAAAAAAAAABAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>PagedResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="CodeShare.Core.Project">
-    <Position X="0.5" Y="0.5" Width="3.5" />
+    <Position X="9.25" Y="1.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>QAAGAQAAAAggAABgAAAAAAQAAAAAAEACEAAGAgAAAAA=</HashCode>
       <FileName>Project.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CodeShare.Core.ProjectFile">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Position X="11.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>ProjectFile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CodeShare.Core.ProjectOpening">
-    <Position X="9.5" Y="0.5" Width="2" />
+    <Position X="3.25" Y="4.25" Width="2" />
     <TypeIdentifier>
       <HashCode>QAACAAAAAAAgAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>ProjectOpening.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CodeShare.Core.ProjectRelease">
-    <Position X="4.25" Y="0.5" Width="2.25" />
+    <Position X="5.5" Y="1.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>QAACCAAAAAAgAAAAAAAAAAQAAAAAAAABAAAAAAAAAIA=</HashCode>
       <FileName>ProjectRelease.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CodeShare.Core.ProjectUser">
-    <Position X="7.25" Y="3" Width="2" />
+    <Position X="9.25" Y="6" Width="2" />
     <TypeIdentifier>
       <HashCode>AAATAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ProjectUser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CodeShare.Core.ProjectUserRequest">
-    <Position X="9.5" Y="3" Width="1.75" />
+    <Position X="0.5" Y="7" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <HashCode>AAADAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>ProjectUserRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CodeShare.Core.Tag">
-    <Position X="2.5" Y="5" Width="1.5" />
+    <Position X="3.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CodeShare.Core.User">
-    <Position X="4.25" Y="3.5" Width="2.75" />
+    <Position X="5.5" Y="4.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAASAAAAAAAAAAAICAACAACAAAAAAAEAAQAAAAAQAAA=</HashCode>
+      <HashCode>AAASAAAAAAAAAAAICAACAACAAAABAAEAAQAAAAAQAAA=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="CodeShare.Core.ProjectUserRole">
-    <Position X="0.5" Y="5" Width="1.5" />
+    <Position X="3.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ProjectUserRole.cs</FileName>
