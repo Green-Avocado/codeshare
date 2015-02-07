@@ -26,6 +26,20 @@ namespace CodeShare.Api.Controllers
             throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.Unauthorized, Resources.Messages.UserUnauthorized));
         }
 
+        [HttpGet]
+        [Route("{id:int}")]
+        public UserInfo Get(int id)
+        {
+            var userService = new UserService();
+            var user = userService.GetUserById(id);
+            if (user != null)
+            {
+                return UserHelper.GetUserInfoFromUser(user);
+            }
+
+            throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.Unauthorized, Resources.Messages.UserUnauthorized));
+        }
+        
         [HttpPost]
         [Route("")]
         public UserInfo CreateUser([FromBody]UserInfo user)

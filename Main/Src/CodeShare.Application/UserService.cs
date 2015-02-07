@@ -9,6 +9,23 @@ namespace CodeShare.Application
 {
     public class UserService
     {
+        public User GetUserById(int id)
+        {
+            try
+            {
+                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
+                {
+                    return unitOfWork.UserRepository.Search(u => u.Id == id).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
+                logger.DefaultLogger.Error.Write("CodeShare.Application.UserService.GetUserById", ex);
+                return null;
+            }
+        }
+
         public User GetUserByName(string userName)
         {
             try
