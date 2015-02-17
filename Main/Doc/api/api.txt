@@ -54,4 +54,3 @@ POST	/users
 	201 Created
 PUT		/users
 	200 OK
-
