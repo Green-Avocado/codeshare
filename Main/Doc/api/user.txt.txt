@@ -1,0 +1,9 @@
+USER
+
+{
+  "id": 1,
+  "userName": "GLOBANT\\mario.moreno",
+  "nickName": "Mario Moreno",
+  "avatarUrl": null,
+  "joinDate": "\/Date(1435806000000-0300)\/"
+}

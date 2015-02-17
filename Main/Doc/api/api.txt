@@ -34,7 +34,7 @@ v1
 PROJECTS
 
 POST 	/projects
-GET 		/projects/{id:int}
+GET 	/projects/{id:int}
 GET		/projects/latest?top={top:int}
 PUT		/projects
 
@@ -42,15 +42,6 @@ SEARCH
 
 GET		/search?name={name}&page={page}&pageSize={pageSize}
 
-USER
-
-{
-  "id": 1,
-  "userName": "GLOBANT\\mario.moreno",
-  "nickName": "Mario Moreno",
-  "avatarUrl": null,
-  "joinDate": "\/Date(1435806000000-0300)\/"
-}
 
 GET		/users/current
 	200 OK
