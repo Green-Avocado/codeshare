@@ -53,7 +53,7 @@ set prompt=$$$g$s
 pushd %solution_folder%
 cd %solution_folder%
 
-call %sonar_runner% -e -D sonar.profile="Sonar way"
+call %sonar_runner% -e -D sonar.profile=CSharpProfile
 @if %errorlevel%  NEQ 0  goto :error
 
 @REM  ----------------------------------------
