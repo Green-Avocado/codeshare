@@ -1,7 +1,7 @@
 HOME
 	Windows Authentication
 	Search
-	Branding (Code Share is Microsoft's free open source project hosting site. You can create projects to share with the world, collaborate with others on their projects, and download open source software.)
+	Branding (Code Share is a free open source project hosting site. You can create projects to share with the world, collaborate with others on their projects, and download open source software.)
 	Create Project
 Join a Project
 Feedback (IssueTracker)
