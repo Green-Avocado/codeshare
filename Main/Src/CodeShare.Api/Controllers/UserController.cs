@@ -1,11 +1,10 @@
-﻿using CodeShare.Api.Models;
-using CodeShare.Application;
-using CodeShare.Core;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using CodeShare.Api.Models;
+using CodeShare.Application;
+using CodeShare.Core;
 
 namespace CodeShare.Api.Controllers
 {
@@ -13,14 +12,38 @@ namespace CodeShare.Api.Controllers
     [RoutePrefix("v1/users")]
     public class UserController : ApiController
     {
+        private IUserService _userService;
+
+        private UserInfo GetUserInfoFromUser(User user)
+        {
+            return new UserInfo
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                NickName = user.NickName,
+                JoinDate = user.JoinDate,
+                AvatarUrl = user.AvatarUrl
+            };
+        }
+
+        public UserController(IUserService userService)
+        {
+            if (userService == null)
+            {
+                throw new ArgumentNullException("userService");
+            }
+
+            _userService = userService;
+        }
+
         [HttpGet]
         [Route("current")]
-        public UserInfo GetCurrentUser()
+        public UserInfo GetCurrentUserInfo()
         {
-            var currentUser = UserHelper.GetCurrentUserInfo();
+            var currentUser = _userService.GetCurrentUser();
             if(currentUser != null)
             {
-                return currentUser;
+                return GetUserInfoFromUser(currentUser);
             }
 
             throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.Unauthorized, Resources.Messages.UserUnauthorized));
@@ -30,11 +53,10 @@ namespace CodeShare.Api.Controllers
         [Route("{id:int}")]
         public UserInfo Get(int id)
         {
-            var userService = new UserService();
-            var user = userService.GetUserById(id);
+            var user = _userService.GetUserById(id);
             if (user != null)
             {
-                return UserHelper.GetUserInfoFromUser(user);
+                return GetUserInfoFromUser(user);
             }
 
             throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.Unauthorized, Resources.Messages.UserUnauthorized));
@@ -44,21 +66,19 @@ namespace CodeShare.Api.Controllers
         [Route("")]
         public UserInfo CreateUser([FromBody]UserInfo user)
         {
-            var userService = new UserService();
-            var newUser = userService.CreateUser(user.UserName, user.AvatarUrl);
-            return UserHelper.GetUserInfoFromUser(newUser);
+            var newUser = _userService.CreateUser(user.UserName, user.AvatarUrl);
+            return GetUserInfoFromUser(newUser);
         }
 
         [HttpPut]
         [Route("")]
         public UserInfo UpdateUser([FromBody]UserInfo user)
         {
-            var userId = UserHelper.GetCurrentUserInfo().Id;
-            var userService = new UserService();
+            var currentUser = _userService.GetCurrentUser();
             try
             {
-                var updatedUser = userService.UpdateUser(userId, user.NickName, user.AvatarUrl);
-                return UserHelper.GetUserInfoFromUser(updatedUser);
+                var updatedUser = _userService.UpdateUser(currentUser.Id, user.NickName, user.AvatarUrl);
+                return GetUserInfoFromUser(updatedUser);
             }
             catch (ArgumentNullException aex)
             {

@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Web.Http;
+using CrossCutting.MainModule.IOC;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace CodeShare.Api
 {
@@ -21,6 +22,9 @@ namespace CodeShare.Api
             json.SerializerSettings.DateFormatHandling = DateFormatHandling.MicrosoftDateFormat;
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+            var container = IocUnityContainer.Instance;
+            config.DependencyResolver = new UnityResolver(container);
         }
     }
 }

@@ -109,6 +109,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CodeShare.Application\CodeShare.Application.csproj">
+      <Project>{dc686694-a830-441d-84d8-e2f62767c806}</Project>
+      <Name>CodeShare.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CodeShare.Core\CodeShare.Core.csproj">
       <Project>{8463dccd-d814-4b4d-8c82-8c2b8f6dacd3}</Project>
       <Name>CodeShare.Core</Name>

@@ -1,27 +1,42 @@
 ﻿using System;
 using System.Linq;
+using System.Web;
 using CodeShare.Core;
 using CodeShare.Data;
 using CrossCutting.Core.Logging;
-using CrossCutting.MainModule.IOC;
 
 namespace CodeShare.Application
 {
-    public class UserService
+    public class UserService : IUserService
     {
+        private IUnitOfWork _unitOfWork;
+        private ILogManager _logManager;
+
+        public UserService(IUnitOfWork unitOfWork, ILogManager logManager)
+        {
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("unitOfWork");
+            }
+
+            if (logManager == null)
+            {
+                throw new ArgumentNullException("logManager");
+            }
+
+            _unitOfWork = unitOfWork;
+            _logManager = logManager;
+        }
+
         public User GetUserById(int id)
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    return unitOfWork.UserRepository.Search(u => u.Id == id).FirstOrDefault();
-                }
+                return _unitOfWork.UserRepository.Search(u => u.Id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.UserService.GetUserById", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.UserService.GetUserById", ex);
                 return null;
             }
         }
@@ -30,48 +45,52 @@ namespace CodeShare.Application
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    return unitOfWork.UserRepository.Search(u => u.UserName == userName).FirstOrDefault();
-                }
+                return _unitOfWork.UserRepository.Search(u => u.UserName == userName).FirstOrDefault();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.UserService.GetUserByName", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.UserService.GetUserByName", ex);
                 return null;
             }
+        }
+
+        public User GetCurrentUser()
+        {
+            if (HttpContext.Current != null && HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                var userName = HttpContext.Current.User.Identity.Name;
+
+                return GetUserByName(userName);
+            }
+
+            return null;
         }
 
         public User CreateUser(string userName, string defaultAvatarUrl)
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
+                var user = GetUserByName(userName);
+
+                if (user == null)
                 {
-                    var user = GetUserByName(userName);
-
-                    if (user == null)
+                    user = new User
                     {
-                        user = new User
-                        {
-                            UserName = userName,
-                            NickName = NameWithoutDomain(userName),
-                            JoinDate = DateTime.Now,
-                            AvatarUrl = defaultAvatarUrl
-                        };
+                        UserName = userName,
+                        NickName = NameWithoutDomain(userName),
+                        JoinDate = DateTime.Now,
+                        AvatarUrl = defaultAvatarUrl
+                    };
 
-                        unitOfWork.UserRepository.Insert(user);
-                        unitOfWork.Save();
-                    }
-
-                    return user;
+                    _unitOfWork.UserRepository.Insert(user);
+                    _unitOfWork.Save();
                 }
+
+                return user;
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.UserService.CreateUser", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.UserService.CreateUser", ex);
                 return null;
             }
         }
@@ -101,22 +120,18 @@ namespace CodeShare.Application
 
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var user = unitOfWork.UserRepository.Get(id);
-                    user.NickName = nickName;
-                    user.AvatarUrl = avatarUrl;
+                var user = _unitOfWork.UserRepository.Get(id);
+                user.NickName = nickName;
+                user.AvatarUrl = avatarUrl;
 
-                    unitOfWork.UserRepository.Update(user);
-                    unitOfWork.Save();
+                _unitOfWork.UserRepository.Update(user);
+                _unitOfWork.Save();
 
-                    return user;
-                }
+                return user;
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.UserService.UpdateUser", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.UserService.UpdateUser", ex);
                 return null;
             }
         }

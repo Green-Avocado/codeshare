@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using CodeShare.Application;
 using CodeShare.Data;
 using CrossCutting.Core.IOC;
 using CrossCutting.Core.Logging;
@@ -12,7 +14,7 @@ namespace CrossCutting.MainModule.IOC
 {
     public class IocUnityContainer : IContainer
     {
-        private static UnityContainer _unityContainer;
+        private static IUnityContainer _unityContainer;
         private static object _lockObject = new object();
         private static IocUnityContainer _container;
 
@@ -20,6 +22,11 @@ namespace CrossCutting.MainModule.IOC
         {
             _unityContainer = new UnityContainer();
             RegisterTypes();
+        }
+
+        private IocUnityContainer(IUnityContainer container)
+        {
+            _unityContainer = container;
         }
 
         public static IocUnityContainer Instance
@@ -48,6 +55,11 @@ namespace CrossCutting.MainModule.IOC
             return _unityContainer.Resolve(type);
         }
 
+        public IEnumerable<object> ResolveAll(Type type)
+        {
+            return _unityContainer.ResolveAll(type);
+        }
+
         public static void RegisterTypes()
         {
             bool realContainer = true;
@@ -55,7 +67,7 @@ namespace CrossCutting.MainModule.IOC
             {
                 if (bool.TryParse(ConfigurationManager.AppSettings["IocRealContainer"], out realContainer) == false)
                 {
-                    realContainer = true;
+                    realContainer = false;
                 }
             }
 
@@ -84,7 +96,20 @@ namespace CrossCutting.MainModule.IOC
             _unityContainer.RegisterType<IApplicationLogger, ApplicationLogger>();
             _unityContainer.RegisterType<ILogWriter, MelLogWriter>(new InjectionConstructor(TraceEventType.Information));
 
+            _unityContainer.RegisterType<IProjectService, ProjectService>();
+            _unityContainer.RegisterType<IUserService, UserService>();
             _unityContainer.RegisterType<IUnitOfWork, UnitOfWork>();
+        }
+
+        public IContainer CreateChildContainer()
+        {
+            var child = _unityContainer.CreateChildContainer();
+            return new IocUnityContainer(child);
+        }
+
+        public void Dispose()
+        {
+            _unityContainer.Dispose();
         }
     }
 }

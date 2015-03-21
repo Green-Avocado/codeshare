@@ -4,58 +4,72 @@ using System.Linq;
 using CodeShare.Core;
 using CodeShare.Data;
 using CrossCutting.Core.Logging;
-using CrossCutting.MainModule.IOC;
 
 namespace CodeShare.Application
 {
-    public class ProjectService
+    public class ProjectService : IProjectService
     {
+        private IUnitOfWork _unitOfWork;
+        private ILogManager _logManager;
+
+        public ProjectService(IUnitOfWork unitOfWork, ILogManager logManager)
+        {
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("unitOfWork");
+            }
+
+            if (logManager == null)
+            {
+                throw new ArgumentNullException("logManager");
+            }
+
+            _unitOfWork = unitOfWork;
+            _logManager = logManager;
+        }
+
         public Project CreateProject(string name, string quickDescription, int userId)
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
+                var project = _unitOfWork.ProjectRepository.Search(p => p.Name == name).FirstOrDefault();
+
+                if (project == null)
                 {
-                    var project = unitOfWork.ProjectRepository.Search(p => p.Name == name).FirstOrDefault();
-             
-                    if (project == null)
+                    project = new Project
                     {
-                        project = new Project
-                        {
-                            Name = name,
-                            QuickDescription = quickDescription,
-                            CreationDate = DateTime.Now
-                        };
+                        Name = name,
+                        QuickDescription = quickDescription,
+                        CreationDate = DateTime.Now
+                    };
 
-                        unitOfWork.ProjectRepository.Insert(project);
-                        unitOfWork.Save();
+                    _unitOfWork.ProjectRepository.Insert(project);
+                    _unitOfWork.Save();
 
-                        var user = unitOfWork.UserRepository.Get(userId);
-                        var creator = new ProjectUser
-                        {
-                            IsActive = true,
-                            JoinDate = DateTime.Now,
-                            Role = ProjectUserRole.Administrator,
-                            User = user
-                        };
-
-                        project.Creator = creator;
-                        project.Members.Add(creator);
-                        unitOfWork.ProjectRepository.Update(project);
-                        unitOfWork.Save();
-
-                        return project;
-                    }
-                    else
+                    var user = _unitOfWork.UserRepository.Get(userId);
+                    var creator = new ProjectUser
                     {
-                        throw new ArgumentException("A project with the same name already exists", "name");
-                    }
+                        IsActive = true,
+                        JoinDate = DateTime.Now,
+                        Role = ProjectUserRole.Administrator,
+                        User = user
+                    };
+
+                    project.Creator = creator;
+                    project.Members.Add(creator);
+                    _unitOfWork.ProjectRepository.Update(project);
+                    _unitOfWork.Save();
+
+                    return project;
+                }
+                else
+                {
+                    throw new ArgumentException("A project with the same name already exists", "name");
                 }
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.CreateProject", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.CreateProject", ex);
                 throw ex;
             }
         }
@@ -64,16 +78,12 @@ namespace CodeShare.Application
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var project = unitOfWork.ProjectRepository.Get(id);
-                    return project;
-                }
+                var project = _unitOfWork.ProjectRepository.Get(id);
+                return project;
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.GetProject", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.GetProject", ex);
                 return null;
             }
         }
@@ -82,16 +92,12 @@ namespace CodeShare.Application
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var projects = unitOfWork.ProjectRepository.SearchPaged(q => q.OrderByDescending(p => p.CreationDate), 0, top).Items.ToList();
-                    return projects;
-                }
+                var projects = _unitOfWork.ProjectRepository.SearchPaged(q => q.OrderByDescending(p => p.CreationDate), 0, top).Items.ToList();
+                return projects;
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.GetLatestProjects", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.GetLatestProjects", ex);
                 return null;
             }
         }
@@ -100,22 +106,18 @@ namespace CodeShare.Application
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var project = unitOfWork.ProjectRepository.Get(id);
-                    project.QuickDescription = quickDescription;
-                    project.Description = description;
-                    project.LogoUrl = logoUrl;
+                var project = _unitOfWork.ProjectRepository.Get(id);
+                project.QuickDescription = quickDescription;
+                project.Description = description;
+                project.LogoUrl = logoUrl;
 
-                    unitOfWork.ProjectRepository.Update(project);
-                    unitOfWork.Save();
-                    return project;
-                }
+                _unitOfWork.ProjectRepository.Update(project);
+                _unitOfWork.Save();
+                return project;
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.UpdateProjectInfo", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.UpdateProjectInfo", ex);
                 throw;
             }
         }
@@ -124,19 +126,15 @@ namespace CodeShare.Application
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var project = unitOfWork.ProjectRepository.Get(id);
-                    project.SourceUrl = sourceUrl;
+                var project = _unitOfWork.ProjectRepository.Get(id);
+                project.SourceUrl = sourceUrl;
 
-                    unitOfWork.ProjectRepository.Update(project);
-                    unitOfWork.Save();
-                }
+                _unitOfWork.ProjectRepository.Update(project);
+                _unitOfWork.Save();
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.UpdateProjectSourceUrl", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.UpdateProjectSourceUrl", ex);
             }
         }
 
@@ -144,16 +142,12 @@ namespace CodeShare.Application
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var project = unitOfWork.ProjectRepository.Search(p => p.Id == id, includeProperties: "Releases").FirstOrDefault();
-                    return project;
-                }
+                var project = _unitOfWork.ProjectRepository.Search(p => p.Id == id, includeProperties: "Releases").FirstOrDefault();
+                return project;
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.GetProjectWithReleases", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.GetProjectWithReleases", ex);
                 return null;
             }
         }
@@ -162,39 +156,31 @@ namespace CodeShare.Application
         {
             try
             {
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var project = unitOfWork.ProjectRepository.Search(p => p.Id == projectId, includeProperties: "Members").FirstOrDefault();
-                    return project.Members.Any(u => u.User.Id == userId);
-                }
+                var project = _unitOfWork.ProjectRepository.Search(p => p.Id == projectId, includeProperties: "Members").FirstOrDefault();
+                return project.Members.Any(u => u.User.Id == userId);
             }
             catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.IsUserInProject", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.IsUserInProject", ex);
                 return false;
             }
         }
 
         public PagedResult<Project> Search(string name, int page, int pageSize)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException("name");
+            }
+
             try
             {
-                if (string.IsNullOrEmpty(name))
-                {
-                    throw new ArgumentException("name");
-                }
-
-                using (var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>())
-                {
-                    var paged = unitOfWork.ProjectRepository.SearchPaged(q => q.Where(p => p.Name.StartsWith(name)).OrderByDescending(p => p.Name), page, pageSize);
-                    return paged;
-                }
+                var paged = _unitOfWork.ProjectRepository.SearchPaged(q => q.Where(p => p.Name.StartsWith(name)).OrderByDescending(p => p.Name), page, pageSize);
+                return paged;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                var logger = IocUnityContainer.Instance.Resolve<ILogManager>();
-                logger.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.Search", ex);
+                _logManager.DefaultLogger.Error.Write("CodeShare.Application.ProjectService.Search", ex);
                 return null;
             }
         }

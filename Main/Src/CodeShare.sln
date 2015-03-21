@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeShare.Api", "CodeShare.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CodeShare.Database", "CodeShare.Database\CodeShare.Database.sqlproj", "{AA686503-E367-4B7D-889F-2E95F6BD30DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeShare.Api.Test", "CodeShare.Api.Test\CodeShare.Api.Test.csproj", "{0E71138E-4803-435C-A943-2CB91D41881A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,10 @@ Global
 		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AA686503-E367-4B7D-889F-2E95F6BD30DA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0E71138E-4803-435C-A943-2CB91D41881A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E71138E-4803-435C-A943-2CB91D41881A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E71138E-4803-435C-A943-2CB91D41881A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E71138E-4803-435C-A943-2CB91D41881A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

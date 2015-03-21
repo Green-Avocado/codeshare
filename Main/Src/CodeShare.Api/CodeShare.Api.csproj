@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\UnityResolver.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -170,7 +171,6 @@
     </Compile>
     <Compile Include="Models\PagedProjectInfo.cs" />
     <Compile Include="Models\ProjectHelper.cs" />
-    <Compile Include="Models\UserHelper.cs" />
     <Compile Include="Resources\Messages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -247,6 +247,14 @@
     <ProjectReference Include="..\CodeShare.Core\CodeShare.Core.csproj">
       <Project>{8463dccd-d814-4b4d-8c82-8c2b8f6dacd3}</Project>
       <Name>CodeShare.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\CrossCutting.Core\CrossCutting.Core.csproj">
+      <Project>{c9213684-eab1-4c17-9313-534709c4fcb6}</Project>
+      <Name>CrossCutting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\CrossCutting.MainModule\CrossCutting.MainModule.csproj">
+      <Project>{cd7c9e78-0d7c-4b4e-8e5d-59459360b1b7}</Project>
+      <Name>CrossCutting.MainModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,10 @@
-﻿using CodeShare.Api.Models;
-using CodeShare.Application;
-using CodeShare.Core;
-using System.Web.Http;
+﻿using System;
 using System.Linq;
-using System;
-using System.Net.Http;
 using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using CodeShare.Api.Models;
+using CodeShare.Application;
 
 namespace CodeShare.Api.Controllers
 {
@@ -19,14 +18,25 @@ namespace CodeShare.Api.Controllers
             [{ProjectOpeningInfo}] GET /projects/openings/search?{query:string}
          */
 
+        private IProjectService _projectService;
+
+        public SearchController(IProjectService projectService)
+        {
+            if (projectService == null)
+            {
+                throw new ArgumentNullException("projectService");
+            }
+
+            _projectService = projectService;
+        }
+
         [HttpGet]
         [Route("")]
         public PagedProjectInfo Search(string name, int page = 0, int pageSize = 10)
         {
             try
             {
-                var projectService = new ProjectService();
-                var paged = projectService.Search(name, page, pageSize);
+                var paged = _projectService.Search(name, page, pageSize);
                 var result = new PagedProjectInfo
                 {
                     Items = paged.Items.Select(p => ProjectHelper.GetProjectInfoFromProject(p)),
@@ -35,7 +45,7 @@ namespace CodeShare.Api.Controllers
 
                 return result;
             }
-            catch(ArgumentException)
+            catch (ArgumentException)
             {
                 throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, Resources.Messages.EmptyProjectName));
             }

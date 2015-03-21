@@ -1,13 +1,11 @@
-﻿using CodeShare.Api.Models;
-using CodeShare.Application;
-using CodeShare.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using CodeShare.Api.Models;
+using CodeShare.Application;
 
 namespace CodeShare.Api.Controllers
 {
@@ -15,15 +13,23 @@ namespace CodeShare.Api.Controllers
     [RoutePrefix("v1/projects")]
     public class ProjectController : ApiController
     {
+        private IProjectService _projectService;
+        private IUserService _userService;
+
+        public ProjectController(IProjectService projectService, IUserService userService)
+        {
+            _projectService = projectService;
+            _userService = userService;
+        }
+
         [HttpPost]
         [Route("")]
         public ProjectInfo CreateProject([FromBody]ProjectInfo project)
         {
-            var projectService = new ProjectService();
             try
             {
-                var userId = UserHelper.GetCurrentUserInfo().Id;
-                var newProject = projectService.CreateProject(project.Name, project.QuickDescription, userId);
+                var user = _userService.GetCurrentUser();
+                var newProject = _projectService.CreateProject(project.Name, project.QuickDescription, user.Id);
                 return ProjectHelper.GetProjectInfoFromProject(newProject);
             }
             catch (ArgumentException aex)
@@ -40,8 +46,7 @@ namespace CodeShare.Api.Controllers
         [Route("{id:int}")]
         public ProjectInfo GetProjectById(int id)
         {
-            var projectService = new ProjectService();
-            var project = projectService.GetProject(id);
+            var project = _projectService.GetProject(id);
             if (project != null)
             {
                 return new ProjectInfo
@@ -65,8 +70,7 @@ namespace CodeShare.Api.Controllers
         [Route("latest")]
         public IEnumerable<ProjectInfo> GetLatestProjects(int top = 10)
         {
-            var projectService = new ProjectService();
-            var latestProjectInfo = projectService.GetLatestProjects(top).Select(p => ProjectHelper.GetProjectInfoFromProject(p)).ToList();
+            var latestProjectInfo = _projectService.GetLatestProjects(top).Select(p => ProjectHelper.GetProjectInfoFromProject(p)).ToList();
 
             return latestProjectInfo;
         }
@@ -75,13 +79,12 @@ namespace CodeShare.Api.Controllers
         [Route("")]
         public ProjectInfo UpdateProject([FromBody]ProjectInfo projectInfo)
         {
-            var projectService = new ProjectService();
-            var userId = UserHelper.GetCurrentUserInfo().Id;
-            if (projectService.IsProjectMember(userId, projectInfo.Id))
+            var user = _userService.GetCurrentUser();
+            if (_projectService.IsProjectMember(user.Id, projectInfo.Id))
             {
                 try
                 {
-                    var updatedProject = projectService.UpdateProjectInfo(projectInfo.Id, projectInfo.QuickDescription, projectInfo.Description, projectInfo.LogoUrl);
+                    var updatedProject = _projectService.UpdateProjectInfo(projectInfo.Id, projectInfo.QuickDescription, projectInfo.Description, projectInfo.LogoUrl);
                     return ProjectHelper.GetProjectInfoFromProject(updatedProject);
                 }
                 catch (Exception ex)
