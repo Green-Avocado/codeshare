@@ -10,69 +10,83 @@ namespace CodeShare.Application.Test
     public class UserServiceTest
     {
         [TestMethod]
-        public void NameWithoutDomainWiththoutADomainShouldReturnUserName()
+        public void GetUserByIdWithExistingIdShouldReturnUser()
         {
             // Arrange
             var userService = IocUnityContainer.Instance.Resolve<IUserService>();
-            string output;
-            string userName = "mario.moreno";
+            int userId = 1;
+            User existingUser;
 
-            // Act
-            output = userService.NameWithoutDomain(userName);
+            // Act 
+            existingUser = userService.GetUserById(userId);
 
             // Assert
-            Assert.AreEqual("mario.moreno", output);
+            Assert.AreEqual("mario.moreno", existingUser.NickName);
         }
 
         [TestMethod]
-        public void NameWithDomainWiththoutDomainShouldReturnUserName()
+        public void GetUserByIdWithNonExistingIdShouldReturnNull()
         {
             // Arrange
             var userService = IocUnityContainer.Instance.Resolve<IUserService>();
-            string output;
-            string userName = @"domain\mario.moreno";
+            int userId = 99;
+            User nullUser;
 
-            // Act
-            output = userService.NameWithoutDomain(userName);
+            // Act 
+            nullUser = userService.GetUserById(userId);
 
             // Assert
-            Assert.AreEqual("mario.moreno", output);
+            Assert.IsNull(nullUser);
         }
 
         [TestMethod]
-        public void GetUserInfoWithValidUserShouldReturnUser()
+        public void GetUserByNameWithExistingNameShouldReturnUser()
         {
             // Arrange
             var userService = IocUnityContainer.Instance.Resolve<IUserService>();
-            var userName = @"Globant\mario.moreno";
-            User actual;
+            string userName = @"Globant\mario.moreno";
+            User existingUser;
+            string avatarUrl = "http://codeshare.globant.com/avatars/default.png";
 
-            // Act
-            actual = userService.GetUserByName(userName);
+            // Act 
+            existingUser = userService.GetUserByName(userName);
 
             // Assert
-            Assert.IsNotNull(actual);
-            Assert.AreEqual(1, actual.Id);
+            Assert.AreEqual(avatarUrl, existingUser.AvatarUrl);
         }
 
         [TestMethod]
-        public void GetUserInfoWithNonExistingUserShouldReturnNull()
+        public void GetUserByNameWithNonExistingNameShouldReturnNull()
         {
             // Arrange
             var userService = IocUnityContainer.Instance.Resolve<IUserService>();
-            var userName = "samus.aran";
-            User actual;
+            string userName = @"Globant\fake.user";
+            User nullUser;
 
-            // Act
-            actual = userService.GetUserByName(userName);
+            // Act 
+            nullUser = userService.GetUserByName(userName);
 
             // Assert
-            Assert.IsNull(actual);
+            Assert.IsNull(nullUser);
+        }
+
+        [TestMethod]
+        public void GetCurrentUserWithNonHttpContextShouldReturnNull()
+        {
+            // Arrange
+            var userService = IocUnityContainer.Instance.Resolve<IUserService>();
+            User nullUser;
+
+            // Act 
+            nullUser = userService.GetCurrentUser();
+
+            // Assert
+            Assert.IsNull(nullUser);
         }
 
         [TestMethod]
         public void CreateUserWithNonExistingNameShouldAddUser()
-        { 
+        {
             // Arrange
             var userService = IocUnityContainer.Instance.Resolve<IUserService>();
             string userName = @"Globant\mario.moreno";
@@ -113,23 +127,80 @@ namespace CodeShare.Application.Test
         }
 
         [TestMethod]
-        public void CreateUserShouldAddNewUser()
+        public void NameWithoutDomainWiththoutADomainShouldReturnUserName()
         {
             // Arrange
             var userService = IocUnityContainer.Instance.Resolve<IUserService>();
-            var userName = @"domain\samus.aran";
-            User actual;
+            string output;
+            string userName = "mario.moreno";
 
             // Act
-            actual = userService.CreateUser(userName, string.Empty);
+            output = userService.NameWithoutDomain(userName);
 
             // Assert
-            Assert.IsNotNull(actual);
-            Assert.AreEqual(DateTime.Now.Day, actual.JoinDate.Day);
-            Assert.AreEqual(DateTime.Now.Hour, actual.JoinDate.Hour);
-            Assert.AreEqual(DateTime.Now.Minute, actual.JoinDate.Minute);
-            Assert.AreEqual(userName, actual.UserName);
-            Assert.AreEqual("samus.aran", actual.NickName);
+            Assert.AreEqual("mario.moreno", output);
+        }
+
+        [TestMethod]
+        public void NameWithDomainWiththoutDomainShouldReturnUserName()
+        {
+            // Arrange
+            var userService = IocUnityContainer.Instance.Resolve<IUserService>();
+            string output;
+            string userName = @"domain\mario.moreno";
+
+            // Act
+            output = userService.NameWithoutDomain(userName);
+
+            // Assert
+            Assert.AreEqual("mario.moreno", output);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateUserWithNullNicknameShouldThrowArgumentNullException()
+        { 
+            // Arrange
+            var userService = IocUnityContainer.Instance.Resolve<IUserService>();
+            int id = 1;
+            string nickName = null;
+            string avatarUrl = "http://codeshare.globant.com/avatars/default.png";
+
+            // Act
+            userService.UpdateUser(id, nickName, avatarUrl);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateUserWithNullAvatarUrlShouldThrowArgumentNullException()
+        {
+            // Arrange
+            var userService = IocUnityContainer.Instance.Resolve<IUserService>();
+            int id = 1;
+            string nickName = "mario.moreno";
+            string avatarUrl = null;
+
+            // Act
+            userService.UpdateUser(id, nickName, avatarUrl);
+        }
+
+        [TestMethod]
+        public void UpdateUserShouldUpdateNickNameAndAvatarUrl()
+        {
+            // Arrange
+            var userService = IocUnityContainer.Instance.Resolve<IUserService>();
+            int id = 1;
+            string nickName = "mario.moreno2";
+            string avatarUrl = "http://www.google.com/avatar.png";
+            User updatedUser;
+
+            // Act
+            updatedUser = userService.UpdateUser(id, nickName, avatarUrl);
+
+            // Assert
+            Assert.AreEqual(nickName, updatedUser.NickName);
+            Assert.AreEqual(@"Globant\mario.moreno", updatedUser.UserName);
+            Assert.AreEqual(avatarUrl, updatedUser.AvatarUrl);
         }
     }
 }

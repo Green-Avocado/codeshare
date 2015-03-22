@@ -11,7 +11,8 @@ namespace CrossCutting.MainModule.Fake
     {
         private List<T> _entities;
 
-        public FakeDbSet() : base()
+        public FakeDbSet()
+            : base()
         {
             _entities = new List<T>();
         }
@@ -46,6 +47,17 @@ namespace CrossCutting.MainModule.Fake
         public IEnumerator GetEnumerator()
         {
             return _entities.GetEnumerator();
+        }
+
+        public override T Find(params object[] keyValues)
+        {
+            int key = (int)keyValues[0];
+            return _entities[0];
+        }
+
+        public override T Attach(T entity)
+        {
+            return entity;
         }
     }
 }

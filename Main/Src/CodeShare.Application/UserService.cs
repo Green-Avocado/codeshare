@@ -113,7 +113,7 @@ namespace CodeShare.Application
                 throw new ArgumentNullException("nickName");
             }
 
-            if (string.IsNullOrEmpty(nickName))
+            if (string.IsNullOrEmpty(avatarUrl))
             {
                 throw new ArgumentNullException("avatarUrl");
             }
