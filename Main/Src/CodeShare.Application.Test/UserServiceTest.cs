@@ -1,14 +1,43 @@
 ﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 using CodeShare.Core;
 using CodeShare.Data;
+using CrossCutting.Core.Logging;
+using CrossCutting.MainModule.Fake;
 using CrossCutting.MainModule.IOC;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace CodeShare.Application.Test
 {
     [TestClass]
     public class UserServiceTest
     {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConstructorWithNullUnitOfWorkShouldThrowArgumentNullException()
+        {
+            // Arrange
+            IUnitOfWork unitOfWork = null;
+            var logManager = IocUnityContainer.Instance.Resolve<ILogManager>();
+
+            // Act
+            new UserService(unitOfWork, logManager);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConstructorWithNullLogManagerShouldThrowArgumentNullException()
+        {
+            // Arrange
+            var unitOfWork = IocUnityContainer.Instance.Resolve<IUnitOfWork>();
+            ILogManager logManager = null;
+
+            // Act
+            new UserService(unitOfWork, logManager);
+        }
+
         [TestMethod]
         public void GetUserByIdWithExistingIdShouldReturnUser()
         {
@@ -159,7 +188,7 @@ namespace CodeShare.Application.Test
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void UpdateUserWithNullNicknameShouldThrowArgumentNullException()
-        { 
+        {
             // Arrange
             var userService = IocUnityContainer.Instance.Resolve<IUserService>();
             int id = 1;
