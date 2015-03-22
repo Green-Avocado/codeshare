@@ -7,10 +7,12 @@ namespace CrossCutting.MainModule.Fake
     {
         public void Write(string message)
         {
+            // Do nothing
         }
 
         public void Write(string message, Exception ex)
         {
+            // Do nothing
         }
     }
 }

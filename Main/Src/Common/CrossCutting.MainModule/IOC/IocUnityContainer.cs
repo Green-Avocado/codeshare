@@ -71,6 +71,9 @@ namespace CrossCutting.MainModule.IOC
                 }
             }
 
+            _unityContainer.RegisterType<IProjectService, ProjectService>();
+            _unityContainer.RegisterType<IUserService, UserService>();
+
             if (realContainer)
             {
                 RegisterRealTypes();
@@ -96,8 +99,6 @@ namespace CrossCutting.MainModule.IOC
             _unityContainer.RegisterType<IApplicationLogger, ApplicationLogger>();
             _unityContainer.RegisterType<ILogWriter, MelLogWriter>(new InjectionConstructor(TraceEventType.Information));
 
-            _unityContainer.RegisterType<IProjectService, ProjectService>();
-            _unityContainer.RegisterType<IUserService, UserService>();
             _unityContainer.RegisterType<IUnitOfWork, UnitOfWork>();
         }
 

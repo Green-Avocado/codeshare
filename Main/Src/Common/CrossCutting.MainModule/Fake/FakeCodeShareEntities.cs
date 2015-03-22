@@ -14,17 +14,27 @@ namespace CrossCutting.MainModule.Fake
         {
             _dbSets = new Dictionary<Type, object>();
 
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            // Users
             var fakeUserDbSet = new FakeDbSet<User>();
             fakeUserDbSet.Add(
                 new User
-            {
-                Id = 1,
-                UserName = "mario.moreno",
-                JoinDate = new DateTime(1980, 5, 10)
-            }
+                {
+                    Id = 1,
+                    UserName = @"Globant\mario.moreno",
+                    NickName = "mario.moreno",
+                    JoinDate = new DateTime(1980, 5, 10),
+                    AvatarUrl = "http://codeshare.globant.com/avatars/default.png"
+                }
             );
 
             _dbSets[typeof(User)] = fakeUserDbSet;
+
+
         }
 
         public DbSet<Project> Projects
