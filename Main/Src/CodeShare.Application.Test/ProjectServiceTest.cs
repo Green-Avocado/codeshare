@@ -32,8 +32,5 @@ namespace CodeShare.Application.Test
             // Act
             new ProjectService(unitOfWork, logManager);
         }
-
-        [TestMethod]
-
     }
 }
