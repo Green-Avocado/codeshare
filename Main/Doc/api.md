@@ -5,9 +5,9 @@ API Documentation
 ---
 
 
-###PROJECTS###
+### PROJECTS ###
 
-#### PROJECT INFO EXAMPLE####
+#### PROJECT INFO EXAMPLE ####
     {
       "id": 1,
       "name": "A Project Name",
@@ -18,7 +18,7 @@ API Documentation
       "creationDate": "\/Date(1412118533083-0300)\/"
     }
 
-####GET PROJECT####
+#### GET PROJECT ####
 
 **Description**: 
 Allow the user to get a specific project information
@@ -48,7 +48,7 @@ Allow the user to get a specific project information
 
 404 If there is no project with the provided id
 
-####CREATE PROJECTS####
+#### CREATE PROJECTS ####
 
 **Description**:
 Allow the user to create a new project
@@ -85,7 +85,7 @@ POST https://api.codeshare.globant.com/v1/projects
 
 400 If the a project with the same name already exists
 
-####GET LATEST PROJECTS####
+#### GET LATEST PROJECTS ####
 
 **Description**:
 Get the latest projects according to CreationDate
@@ -126,7 +126,7 @@ https://api.codeshare.globant.com/v1/projects/latest?top=2
       }
     ]
 
-####UPDATE  PROJECT####
+#### UPDATE  PROJECT ####
 
 **Description**:
 Update a specific project Quick Description, Description and or Logo URL
@@ -276,9 +276,9 @@ PUT  https://api.codeshare.globant.com/v1/users
 
 **Error Messages:**
 
-#### SEARCH####
+#### SEARCH ####
 
-####Paged Project Info Example####
+#### Paged Project Info Example ####
 
     {
       "items": [
